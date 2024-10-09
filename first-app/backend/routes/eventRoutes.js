@@ -16,8 +16,8 @@ router.get('/', async (req, res) => {
 
 // POST a new event
 router.post('/', async (req, res) => {
-  const { title, date, description, image } = req.body;
-  const newEvent = new Event({ title, date, description, image });
+  const { title, date, description, image, prize} = req.body;
+  const newEvent = new Event({ title, date, description, image, prize });
 
   try {
     const savedEvent = await newEvent.save();

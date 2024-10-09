@@ -18,6 +18,7 @@ router.post('/', async (req, res) => {
   const event = new Event({
     title: req.body.title,
     date: req.body.date,
+    prize: req.body.prize,
     description: req.body.description,
     image: req.body.image
   });

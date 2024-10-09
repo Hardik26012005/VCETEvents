@@ -10,6 +10,7 @@ const ManageEvents = () => {
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
+  const [prize, setPrize] = useState('');
 
   useEffect(() => {
     fetchEvents();
@@ -17,6 +18,7 @@ const ManageEvents = () => {
 
   const fetchEvents = async () => {
     const response = await axios.get('http://localhost:5000/api/events');
+    // console.log(response.data)
     setEvents(response.data);
   };
 
@@ -26,6 +28,7 @@ const ManageEvents = () => {
     setDate(event.date);
     setDescription(event.description);
     setImage(event.image);
+    setPrize(event.prize);
   };
 
   const handleDelete = async (id) => {
@@ -49,6 +52,7 @@ const ManageEvents = () => {
     await axios.post('http://localhost:5000/api/events', newEvent);
     setTitle('');
     setDate('');
+    setPrize('');
     setDescription('');
     setImage('');
     fetchEvents(); // Refresh the list
@@ -60,6 +64,7 @@ const ManageEvents = () => {
       <form className="event-form" onSubmit={handleCreate}>
         <input type="text" placeholder="Event Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
         <input type="date" placeholder="Event Date" value={date} onChange={(e) => setDate(e.target.value)} required />
+        <input type="text" placeholder="Prizepool" value={prize} onChange={(e) => setPrize(e.target.value)} required />
         <textarea placeholder="Event Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
         <input type="text" placeholder="Image URL" value={image} onChange={(e) => setImage(e.target.value)} required />
         <button type="submit" className="submit-button">Create Event</button>
@@ -71,6 +76,7 @@ const ManageEvents = () => {
           <li key={event._id} className="event-item">
             <h4>{event.title}</h4>
             <p>Date: {event.date}</p>
+            <p>Prize: {event.prize}</p>
             <p>{event.description}</p>
             <img src={event.image} alt={event.title} className="event-image" />
             <div className="event-buttons">
@@ -86,6 +92,7 @@ const ManageEvents = () => {
           <h4>Edit Event</h4>
           <input type="text" placeholder="Event Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
           <input type="date" placeholder="Event Date" value={date} onChange={(e) => setDate(e.target.value)} required />
+          <input type="text" placeholder="Prizepool" value={prize} onChange={(e) => setPrize(e.target.value)} required />
           <textarea placeholder="Event Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
           <input type="text" placeholder="Image URL" value={image} onChange={(e) => setImage(e.target.value)} required />
           <button type="submit" className="submit-button">Update Event</button>
