@@ -1,0 +1,77 @@
+/* AdminDashboard.css */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f9;
+}
+
+.dashboard-container {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 40px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.dashboard-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.dashboard-card {
+  background-color: #fff;
+  border-radius: 15px;
+  width: 250px;
+  text-align: center;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: #333;
+}
+
+.dashboard-card i {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #ff6347;
+}
+
+.dashboard-card h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.dashboard-card p {
+  font-size: 16px;
+  color: #777;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Add smooth hover animations */
+@keyframes popUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.dashboard-card:hover i {
+  animation: popUp 0.5s ease-in-out;
+}
+

@@ -1,0 +1,80 @@
+/* Login.css */
+
+/* Full page container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5; /* Light background color */
+}
+
+/* Card styling */
+.login-card {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  text-align: center;
+  width: 350px; /* Set card width */
+  animation: fadeIn 0.5s ease-in-out; /* Subtle fade-in animation */
+}
+
+/* Title */
+.login-card h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+/* Input fields */
+.login-card input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Submit button */
+.login-card button {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-card button:hover {
+  background-color: #e5533c;
+}
+
+/* Toggle between login and signup */
+.toggle-auth {
+  color: #ff6347;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.toggle-auth:hover {
+  color: #e5533c;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

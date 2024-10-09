@@ -1,0 +1,102 @@
+/* Reports.css */
+
+/* General styling */
+.reports-container {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+/* Grid layout for report cards */
+.reports-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+/* Individual report card styling */
+.report-card {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: calc(30% - 20px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.5s ease-in-out forwards;
+  text-align: left;
+  position: relative;
+}
+
+/* Hover effect with popup animation */
+.report-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.report-card:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  animation: popupEffect 0.3s ease-out forwards;
+}
+
+@keyframes popupEffect {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Icon and details styles */
+.report-details {
+  margin-top: 10px;
+}
+
+.report-details p {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
+
+.report-details p svg {
+  margin-right: 10px;
+  color: #ff6347; /* Icon color */
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+  .report-card {
+    width: calc(45% - 20px);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .report-card {
+    width: 100%;
+  }
+}
