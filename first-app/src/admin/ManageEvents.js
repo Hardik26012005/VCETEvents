@@ -38,7 +38,7 @@ const ManageEvents = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    const updatedEvent = { title, date, description, image };
+    const updatedEvent = { title, date, description, image, prize };
 
     await axios.put(`http://localhost:5000/api/events/${editedEvent._id}`, updatedEvent);
     setEditedEvent(null);
@@ -47,7 +47,7 @@ const ManageEvents = () => {
 
   const handleCreate = async (e) => {
     e.preventDefault();
-    const newEvent = { title, date, description, image };
+    const newEvent = { title, date, description, image, prize };
 
     await axios.post('http://localhost:5000/api/events', newEvent);
     setTitle('');
