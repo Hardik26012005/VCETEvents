@@ -4,7 +4,8 @@ const eventSchema = new mongoose.Schema({
   title: { type: String, required: true },
   date: { type: Date, required: true },
   description: { type: String, required: true },
-  image: { type: String }  // URL or file path for the image
+  image: { type: String },
+  // prize: {type: Number} // URL or file path for the image
 });
 
 module.exports = mongoose.model('Event', eventSchema);
