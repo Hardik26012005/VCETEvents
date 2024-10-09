@@ -1,11 +1,13 @@
 // src/Components/EventList.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import RegistrationForm from './RegistrationForm'; // Import the registration form
 import './EventList.css'; // Import your improved CSS file
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null); // To store the event clicked for modal
+  const [isFormOpen, setIsFormOpen] = useState(false); // For handling the registration form
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/events')
@@ -25,6 +27,23 @@ const EventList = () => {
   // Handle closing the modal
   const handleCloseModal = () => {
     setSelectedEvent(null); // Clear selected event to close modal
+  };
+
+  // Handle opening the registration form
+  const handleRegisterClick = () => {
+    setIsFormOpen(true);
+  };
+
+  // Handle closing the registration form
+  const handleFormClose = () => {
+    setIsFormOpen(false);
+  };
+
+  // Handle submitting the registration form
+  const handleFormSubmit = (formData) => {
+    console.log('Form submitted:', formData);
+    setIsFormOpen(false); // Close the form after submission
+    // You can send formData to the server here using Axios
   };
 
   return (
@@ -61,10 +80,13 @@ const EventList = () => {
             <p><strong>Description:</strong> {selectedEvent.description}</p>
             <p><strong>Prize:</strong> {selectedEvent.prize || 'No prize available'}</p>
             <button className="modal-close-button" onClick={handleCloseModal}>Close</button>
-            <button className="register-button">Register</button>
+            <button className="register-button" onClick={handleRegisterClick}>Register</button>
           </div>
         </div>
       )}
+
+      {/* Registration Form Modal */}
+      <RegistrationForm isOpen={isFormOpen} onClose={handleFormClose} onSubmit={handleFormSubmit} />
     </div>
   );
 };
