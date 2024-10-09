@@ -1,4 +1,4 @@
-// src/Components/EventList.js  check
+// src/Components/EventList.js 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './EventList.css'; // Import your improved CSS file
