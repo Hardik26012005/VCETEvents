@@ -9,6 +9,7 @@ const bookingRoutes = require('./routes/bookings');
 
 
 
+
 const app = express();
 
 mongoose.connect(process.env.MONGO_URI)

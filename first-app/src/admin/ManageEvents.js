@@ -1,4 +1,3 @@
-// src/admin/ManageEvents.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ManageEvents.css'; // Import the CSS file for styling
@@ -18,7 +17,6 @@ const ManageEvents = () => {
 
   const fetchEvents = async () => {
     const response = await axios.get('http://localhost:5000/api/events');
-    // console.log(response.data)
     setEvents(response.data);
   };
 
@@ -58,6 +56,25 @@ const ManageEvents = () => {
     fetchEvents(); // Refresh the list
   };
 
+  // Download event booking data as text file
+  const handleGetData = async (eventId) => {
+    try {
+      const response = await axios.get(`http://localhost:5000/api/bookings/export/${eventId}`, {
+        responseType: 'blob', // Important for handling file downloads
+      });
+
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `bookings_${eventId}.txt`); // Download filename
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } catch (error) {
+      console.error('Error downloading file:', error);
+    }
+  };
+
   return (
     <div className="manage-events-container">
       <h3>Create New Event</h3>
@@ -82,6 +99,7 @@ const ManageEvents = () => {
             <div className="event-buttons">
               <button onClick={() => handleEdit(event)} className="edit-button">Edit</button>
               <button onClick={() => handleDelete(event._id)} className="delete-button">Delete</button>
+              <button onClick={() => handleGetData(event._id)} className="data-button">Get Data</button> {/* New Button */}
             </div>
           </li>
         ))}
