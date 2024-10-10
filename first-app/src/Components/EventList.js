@@ -6,8 +6,8 @@ import './EventList.css'; // Import your improved CSS file
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
-  const [selectedEvent, setSelectedEvent] = useState(null); // To store the event clicked for modal
-  const [isFormOpen, setIsFormOpen] = useState(false); // For handling the registration form
+  const [selectedEvent, setSelectedEvent] = useState(null); // For the selected event
+  const [isFormOpen, setIsFormOpen] = useState(false); // For the registration form
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/events')
@@ -19,31 +19,32 @@ const EventList = () => {
       });
   }, []);
 
-  // Handle View Details button click
   const handleViewDetails = (event) => {
     setSelectedEvent(event); // Set the clicked event to display in the modal
   };
 
-  // Handle closing the modal
   const handleCloseModal = () => {
     setSelectedEvent(null); // Clear selected event to close modal
   };
 
-  // Handle opening the registration form
   const handleRegisterClick = () => {
     setIsFormOpen(true);
   };
 
-  // Handle closing the registration form
   const handleFormClose = () => {
     setIsFormOpen(false);
   };
 
-  // Handle submitting the registration form
-  const handleFormSubmit = (formData) => {
-    console.log('Form submitted:', formData);
-    setIsFormOpen(false); // Close the form after submission
-    // You can send formData to the server here using Axios
+  const handleFormSubmit = async (formData) => {
+    // Here, add the selectedEvent information to formData before sending it
+    const bookingData = { ...formData, eventId: selectedEvent._id, eventTitle: selectedEvent.title };
+    try {
+      await axios.post('http://localhost:5000/api/bookings', bookingData); // Send data to the backend
+      setIsFormOpen(false); // Close the form after submission
+      console.log('Booking successful:', bookingData);
+    } catch (error) {
+      console.error('Error registering for the event:', error);
+    }
   };
 
   return (

@@ -1,46 +1,39 @@
-// Booking.js
-import React from 'react';
-import './Booking.css'; // Import the CSS file for Booking styling
-import { FaCalendarAlt, FaUsers, FaMoneyBillWave } from 'react-icons/fa'; // Import icons from react-icons
+// src/Components/Booking.js
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './Booking.css'; // Assuming you want to add styles
 
 const Booking = () => {
-  const registeredEvents = [
-    {
-      id: 1,
-      title: 'VCET HACKATHON 2024',
-      date: 'October 4, 2024',
-      attendees: 150,
-      prize: '$2000',
-    },
-    {
-      id: 2,
-      title: 'Startup Pitch Fest',
-      date: 'November 15, 2024',
-      attendees: 100,
-      prize: '$1500',
-    },
-    {
-      id: 3,
-      title: 'VCET Cultural Fest',
-      date: 'December 5, 2024',
-      attendees: 300,
-      prize: '$1000',
-    },
-  ];
+  const [bookings, setBookings] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/booking') // Ensure this route is correct
+      .then((response) => {
+        setBookings(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching bookings:', error);
+      });
+  }, []);
 
   return (
-    <div className="booking-container">
-      <h1 className="booking-title">Your Registered Events</h1>
-      <div className="booking-grid">
-        {registeredEvents.map(event => (
-          <div className="booking-card" key={event.id}>
-            <h2>{event.title}</h2>
-            <p><FaCalendarAlt /> <strong>Date:</strong> {event.date}</p>
-            <p><FaUsers /> <strong>Attendees:</strong> {event.attendees}</p>
-            <p><FaMoneyBillWave /> <strong>Prize Money:</strong> {event.prize}</p>
+    <div className="bookings-container">
+      {bookings.length > 0 ? (
+        bookings.map((booking) => (
+          <div key={booking._id} className="booking-card">
+            <h3>{booking.eventTitle}</h3>
+            {/* Adjusted date handling */}
+            <p><strong>Date:</strong> {booking.eventId ? new Date(booking.eventId.date).toDateString() : 'N/A'}</p>
+            <p><strong>Name:</strong> {booking.name}</p>
+            <p><strong>Student ID:</strong> {booking.studentId}</p>
+            <p><strong>Department:</strong> {booking.department}</p>
+            <p><strong>Phone:</strong> {booking.phone}</p>
+            <p><strong>Email:</strong> {booking.email}</p>
           </div>
-        ))}
-      </div>
+        ))
+      ) : (
+        <p>No bookings yet.</p>
+      )}
     </div>
   );
 };

@@ -18,7 +18,13 @@ const RegistrationForm = ({ isOpen, onClose, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Ensure the formData is valid before calling onSubmit
+    if (Object.values(formData).some(x => x === '')) {
+      alert("Please fill all fields."); // Alert if any field is empty
+      return;
+    }
     onSubmit(formData);
+    console.log("Submit clicked");
   };
 
   if (!isOpen) return null;
