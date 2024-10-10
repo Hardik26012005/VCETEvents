@@ -18,18 +18,21 @@ const Booking = () => {
 
   return (
     <div className="bookings-container">
+      <h2>Your Bookings</h2>
       {bookings.length > 0 ? (
-        bookings.map((booking) => (
-          <div key={booking._id} className="booking-card">
-            <h3>{booking.eventTitle}</h3>
-            <p><strong>Date:</strong> {new Date(booking.eventDate).toDateString()}</p>
-            <p><strong>Name:</strong> {booking.name}</p>
-            <p><strong>Student ID:</strong> {booking.studentId}</p>
-            <p><strong>Department:</strong> {booking.department}</p>
-            <p><strong>Email:</strong> {booking.email}</p>
-            <p><strong>Phone:</strong> {booking.phone}</p>
-          </div>
-        ))
+        <div className="bookings-grid">
+          {bookings.map((booking) => (
+            <div key={booking._id} className="booking-card">
+              <h3 className="booking-event-title">{booking.eventTitle}</h3>
+              <p><i className="fas fa-calendar-alt"></i> <strong>Date:</strong> {new Date(booking.eventDate).toDateString()}</p>
+              <p><i className="fas fa-user"></i> <strong>Name:</strong> {booking.name}</p>
+              <p><i className="fas fa-id-card"></i> <strong>Student ID:</strong> {booking.studentId}</p>
+              <p><i className="fas fa-graduation-cap"></i> <strong>Department:</strong> {booking.department}</p>
+              <p><i className="fas fa-envelope"></i> <strong>Email:</strong> {booking.email}</p>
+              <p><i className="fas fa-phone"></i> <strong>Phone:</strong> {booking.phone}</p>
+            </div>
+          ))}
+        </div>
       ) : (
         <p>No bookings yet.</p>
       )}

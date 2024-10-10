@@ -7,20 +7,18 @@
 }
 
 .bookings-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+  gap: 20px; /* Space between grid items */
   margin-top: 20px;
 }
 
 .booking-card {
   background-color: #ffffff;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 300px; /* Card width */
   text-align: left;
 }
 
@@ -35,8 +33,37 @@
   margin-bottom: 10px;
 }
 
+.booking-card p {
+  display: flex;
+  align-items: center; /* Align icons vertically */
+  margin: 10px 0;
+}
+
+.booking-card i {
+  margin-right: 10px; /* Space between icon and text */
+  color: #ff6347; /* Customize icon color */
+  transition: transform 0.3s ease; /* Animation on hover */
+}
+
+.booking-card:hover i {
+  transform: scale(1.1); /* Slight scale effect on hover */
+}
+
 .no-bookings {
   font-size: 1.5rem;
   color: #999;
   padding: 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bookings-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .bookings-grid {
+    grid-template-columns: 1fr; /* One column on mobile devices */
+  }
 }
