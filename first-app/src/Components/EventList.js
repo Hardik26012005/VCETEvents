@@ -6,10 +6,11 @@ import './EventList.css'; // Import your improved CSS file
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
-  const [selectedEvent, setSelectedEvent] = useState(null); // For the selected event
-  const [isFormOpen, setIsFormOpen] = useState(false); // For the registration form
+  const [selectedEvent, setSelectedEvent] = useState(null); // To store the selected event
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   useEffect(() => {
+    // Fetch events data from the API
     axios.get('http://localhost:5000/api/events')
       .then((response) => {
         setEvents(response.data);
@@ -19,32 +20,43 @@ const EventList = () => {
       });
   }, []);
 
+  // Handle View Details button click
   const handleViewDetails = (event) => {
     setSelectedEvent(event); // Set the clicked event to display in the modal
   };
 
+  // Handle closing the modal
   const handleCloseModal = () => {
     setSelectedEvent(null); // Clear selected event to close modal
   };
 
+  // Handle opening the registration form
   const handleRegisterClick = () => {
     setIsFormOpen(true);
   };
 
+  // Handle closing the registration form
   const handleFormClose = () => {
     setIsFormOpen(false);
   };
 
-  const handleFormSubmit = async (formData) => {
-    // Here, add the selectedEvent information to formData before sending it
-    const bookingData = { ...formData, eventId: selectedEvent._id, eventTitle: selectedEvent.title };
-    try {
-      await axios.post('http://localhost:5000/api/bookings', bookingData); // Send data to the backend
-      setIsFormOpen(false); // Close the form after submission
-      console.log('Booking successful:', bookingData);
-    } catch (error) {
-      console.error('Error registering for the event:', error);
-    }
+  // Handle submitting the registration form
+  const handleFormSubmit = (formData) => {
+    const bookingData = {
+      ...formData,
+      eventId: selectedEvent._id,
+      eventTitle: selectedEvent.title,
+      eventDate: selectedEvent.date, // Include event date for booking
+    };
+
+    axios.post('http://localhost:5000/api/bookings', bookingData)
+      .then((response) => {
+        console.log('Booking successful:', response.data);
+        setIsFormOpen(false); // Close the form after submission
+      })
+      .catch((error) => {
+        console.error('Error creating booking:', error);
+      });
   };
 
   return (
@@ -60,11 +72,17 @@ const EventList = () => {
             />
             <div className="event-details">
               <h3>{event.title}</h3>
-              <p><strong>Date:</strong> {event.date}</p>
+              <p><strong>Date:</strong> {new Date(event.date).toDateString()}</p> {/* Format date */}
               <p>{event.description}</p>
               <button className="event-button" onClick={() => handleViewDetails(event)}>
                 View Details
               </button>
+              {/* <button className="register-button" onClick={() => {
+                setSelectedEvent(event);
+                setIsFormOpen(true); // Open the registration form
+              }}>
+                Register
+              </button> */}
             </div>
           </div>
         ))
@@ -77,17 +95,25 @@ const EventList = () => {
         <div className="modal-overlay" onClick={handleCloseModal}>
           <div className="modal-card" onClick={(e) => e.stopPropagation()}>
             <h2>{selectedEvent.title}</h2>
-            <p><strong>Date:</strong> {selectedEvent.date}</p>
+            <p><strong>Date:</strong> {new Date(selectedEvent.date).toDateString()}</p>
             <p><strong>Description:</strong> {selectedEvent.description}</p>
             <p><strong>Prize:</strong> {selectedEvent.prize || 'No prize available'}</p>
             <button className="modal-close-button" onClick={handleCloseModal}>Close</button>
-            <button className="register-button" onClick={handleRegisterClick}>Register</button>
+            <button className="register-button" onClick={() => {
+              setIsFormOpen(true); // Open registration form
+            }}>Register</button>
           </div>
         </div>
       )}
 
       {/* Registration Form Modal */}
-      <RegistrationForm isOpen={isFormOpen} onClose={handleFormClose} onSubmit={handleFormSubmit} />
+      {isFormOpen && selectedEvent && (
+        <RegistrationForm 
+          isOpen={isFormOpen} 
+          onClose={handleFormClose} 
+          onSubmit={handleFormSubmit} 
+        />
+      )}
     </div>
   );
 };

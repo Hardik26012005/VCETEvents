@@ -5,7 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const eventRoutes = require('./routes/eventRoutes');
 const reportRoutes = require('./routes/reportRoutes'); // Import report routes
-const bookingRoutes = require('./routes/bookingRoutes'); 
+const bookingRoutes = require('./routes/bookings');
 
 
 
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/events', eventRoutes);
 app.use('/api/reports', reportRoutes); // Use reports route
-app.use('/api/booking', bookingRoutes);
+app.use('/api/bookings', bookingRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

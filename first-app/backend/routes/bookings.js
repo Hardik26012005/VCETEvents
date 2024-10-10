@@ -7,7 +7,7 @@ const router = express.Router();
 // GET all bookings
 router.get('/', async (req, res) => {
   try {
-    const bookings = await Booking.find().populate('eventId'); // Populate with event details if needed
+    const bookings = await Booking.find(); 
     res.json(bookings);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching bookings' });
@@ -16,8 +16,19 @@ router.get('/', async (req, res) => {
 
 // POST a new booking
 router.post('/', async (req, res) => {
+  const { eventId, eventTitle, eventDate, name, studentId, department, phone, email } = req.body;
+  const newBooking = new Booking({
+    eventId,
+    eventTitle,
+    eventDate,
+    name,
+    studentId,
+    department,
+    phone,
+    email,
+  });
+
   try {
-    const newBooking = new Booking(req.body);
     await newBooking.save();
     res.status(201).json(newBooking);
   } catch (error) {

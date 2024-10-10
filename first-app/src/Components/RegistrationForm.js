@@ -18,13 +18,7 @@ const RegistrationForm = ({ isOpen, onClose, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Ensure the formData is valid before calling onSubmit
-    if (Object.values(formData).some(x => x === '')) {
-      alert("Please fill all fields."); // Alert if any field is empty
-      return;
-    }
-    onSubmit(formData);
-    console.log("Submit clicked");
+    onSubmit(formData); // Send the form data to EventList
   };
 
   if (!isOpen) return null;
@@ -35,46 +29,11 @@ const RegistrationForm = ({ isOpen, onClose, onSubmit }) => {
         <span className="close-button" onClick={onClose}>&times;</span>
         <h2>Event Registration</h2>
         <form onSubmit={handleSubmit}>
-          <input 
-            type="text" 
-            name="name" 
-            placeholder="Name" 
-            value={formData.name} 
-            onChange={handleChange} 
-            required 
-          />
-          <input 
-            type="text" 
-            name="studentId" 
-            placeholder="Student ID" 
-            value={formData.studentId} 
-            onChange={handleChange} 
-            required 
-          />
-          <input 
-            type="text" 
-            name="department" 
-            placeholder="Department" 
-            value={formData.department} 
-            onChange={handleChange} 
-            required 
-          />
-          <input 
-            type="tel" 
-            name="phone" 
-            placeholder="Phone Number" 
-            value={formData.phone} 
-            onChange={handleChange} 
-            required 
-          />
-          <input 
-            type="email" 
-            name="email" 
-            placeholder="Email" 
-            value={formData.email} 
-            onChange={handleChange} 
-            required 
-          />
+          <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
+          <input type="text" name="studentId" placeholder="Student ID" value={formData.studentId} onChange={handleChange} required />
+          <input type="text" name="department" placeholder="Department" value={formData.department} onChange={handleChange} required />
+          <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required />
+          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
           <button type="submit">Submit</button>
         </form>
       </div>
