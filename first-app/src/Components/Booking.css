@@ -6,6 +6,12 @@
   text-align: center;
 }
 
+/* .bookings-container h2{
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+} */
+
 .bookings-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Four equal columns */
@@ -33,10 +39,21 @@
   margin-bottom: 10px;
 }
 
+.booking-card h3{
+  color: #f46a07;
+  border-bottom: 2px solid black; /* Adds a black bottom line */
+  padding-bottom: 4px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+}
+
 .booking-card p {
   display: flex;
   align-items: center; /* Align icons vertically */
   margin: 10px 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 
 .booking-card i {

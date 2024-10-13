@@ -1,0 +1,85 @@
+/* ManageReports.css */
+
+/* General container styling */
+.manage-reports {
+    padding: 40px;
+    background-color: #f0f4f8; /* Softer background color */
+    border-radius: 12px; /* Slightly rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+    margin: 20px auto;
+    max-width: 100%;
+  }
+  
+  /* Form styling */
+  .report-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Increased gap for better spacing */
+    margin-bottom: 30px;
+  }
+  
+  .report-form input {
+    padding: 12px; /* Increased padding for comfort */
+    border: 1px solid #ddd; /* Softer border */
+    border-radius: 8px; /* More rounded corners */
+    font-size: 16px;
+    font-family: Arial, sans-serif; /* Consistent font */
+  }
+  
+  .report-form button {
+    padding: 14px;
+    background-color: #4caf50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 8px; /* More rounded buttons */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Added shadow transition */
+  }
+  
+  .report-form button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+  }
+  
+  /* Reports list styling */
+  .reports-list {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap */
+    gap: 20px; /* Space between items */
+    padding: 0; /* Remove default padding */
+    list-style: none; /* Remove default list styling */
+  }
+  
+  /* Individual report card styling */
+  .report-item {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #ddd; /* Softer border */
+    border-radius: 12px; /* More rounded corners */
+    padding: 15px; /* Increased padding */
+    width: calc(50% - 10px); /* Two items in a row with gap adjustment */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s; /* Smooth scaling */
+  }
+  
+  .report-item:hover {
+    transform: translateY(-2px); /* Slight lift effect on hover */
+  }
+  
+  /* Button styles */
+  .delete-report-button {
+    padding: 10px 16px; /* Slightly larger buttons */
+    border: none;
+    margin-top: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #ff1100; /* Red */
+    color: white;
+    transition: background-color 0.3s, transform 0.2s; /* Added transform for hover */
+  }
+  
+  .delete-report-button:hover {
+    transform: scale(1.05);
+  }
+  

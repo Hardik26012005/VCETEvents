@@ -18,7 +18,7 @@ const Booking = () => {
 
   return (
     <div className="bookings-container">
-      <h2>Your Bookings</h2>
+      {/* <h2>Your Bookings</h2> */}
       {bookings.length > 0 ? (
         <div className="bookings-grid">
           {bookings.map((booking) => (

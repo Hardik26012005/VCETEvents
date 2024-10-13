@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-
+import './ManageReports.css';
 
 const ManageReports = () => {
   const [reports, setReports] = useState([]);
@@ -47,7 +46,7 @@ const ManageReports = () => {
   return (
     <div className="manage-reports">
       <h2>Manage Reports</h2>
-      <form onSubmit={handleSubmit}>
+      <form className="report-form" onSubmit={handleSubmit}>
         <input type="text" name="eventId" placeholder="Event ID" value={newReport.eventId} onChange={handleInputChange} required />
         <input type="text" name="attendees" placeholder="Attendees" value={newReport.attendees} onChange={handleInputChange} required />
         <input type="text" name="winners" placeholder="Winners" value={newReport.winners} onChange={handleInputChange} required />
@@ -56,12 +55,17 @@ const ManageReports = () => {
       </form>
 
       <h3>Existing Reports</h3>
-      <ul>
+      <ul className="reports-list">
         {reports.length > 0 ? (
           reports.map(report => (
-            <li key={report._id}>
-              Event ID: {report.eventId}, Attendees: {report.attendees}, Winners: {report.winners}, Prize Money: {report.prizeMoney}
-              <button onClick={() => handleDelete(report._id)}>Delete</button>
+            <li key={report._id} className="report-item">
+              <div>
+                <strong>Event ID:</strong> {report.eventId}<br />
+                <strong>Attendees:</strong> {report.attendees}<br />
+                <strong>Winners:</strong> {report.winners}<br />
+                <strong>Prize Money:</strong> {report.prizeMoney}
+              </div>
+              <button className="delete-report-button" onClick={() => handleDelete(report._id)}>Delete</button>
             </li>
           ))
         ) : (

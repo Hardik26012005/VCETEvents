@@ -7,32 +7,41 @@
   text-align: center;
 }
 
+.eventt{
+  color: #f46a07;
+  border-bottom: 2px solid black; /* Adds a black bottom line */
+  padding-bottom: 4px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
 /* Grid layout for report cards */
 .reports-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center; /* Align items to the right */
   gap: 20px;
 }
 
 /* Individual report card styling */
 .report-card {
   background-color: #ffffff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: calc(30% - 20px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeInUp 0.5s ease-in-out forwards;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: calc(30% - 20px); /* Adjust width to fit three in a row */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 0.6s ease-in-out forwards;
   text-align: left;
-  position: relative;
+  position: ;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-/* Hover effect with popup animation */
+/* Hover effect with pop-up animation */
 .report-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
 .report-card:hover::before {
@@ -42,11 +51,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  animation: popupEffect 0.3s ease-out forwards;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  animation: popupEffect 0.4s ease-out forwards;
 }
 
+/* Animation keyframes */
 @keyframes popupEffect {
   0% {
     opacity: 0;
@@ -58,9 +68,11 @@
   }
 }
 
-/* Icon and details styles */
+/* Report details styling */
 .report-details {
-  margin-top: 10px;
+  margin-top: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 }
 
 .report-details p {
@@ -72,11 +84,147 @@
 }
 
 .report-details p svg {
-  margin-right: 10px;
-  color: #ff6347; /* Icon color */
+  margin-right: 12px;
+  color: #ff6347;
+  transition: transform 0.3s ease;
 }
 
-/* Animation Keyframes */
+.report-card:hover p svg {
+  transform: scale(1.2);
+}
+
+/* Icon and details styles */
+.report-details .icon {
+  margin-right: 8px;
+  color: #ff6347;
+  font-size: 20px;
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 1024px) {
+  .report-card {
+    width: calc(40% - 20px); /* 2 cards per row for tablets */
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .report-card {
+    width: calc(50% - 20px); /* 2 cards per row on smaller tablets */
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .report-card {
+    width: 100%; /* Full width on mobile devices */
+  }
+}
+/* Reports.css */
+
+/* General styling */
+.reports-container {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+/* Grid layout for report cards */
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px;
+  justify-items: center; /* Center align items horizontally */
+}
+
+/* Individual report card styling */
+.report-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Full width for each card */
+  max-width: 90%; /* Remove max-width to ensure full column usage */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 0.6s ease-in-out forwards;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Hover effect with pop-up animation */
+.report-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.report-card:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  animation: popupEffect 0.4s ease-out forwards;
+}
+
+/* Animation keyframes */
+@keyframes popupEffect {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Report details styling */
+.report-details {
+  margin-top: 20px;
+}
+
+.report-details p {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
+
+.report-details p svg {
+  margin-right: 12px;
+  color: #ff6347;
+  transition: transform 0.3s ease;
+}
+
+.report-card:hover p svg {
+  transform: scale(1.2);
+}
+
+/* Icon and details styles */
+.report-details .icon {
+  margin-right: 8px;
+  color: #ff6347;
+  font-size: 20px;
+}
+
+/* Animation keyframes */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -90,13 +238,13 @@
 
 /* Responsive Design */
 @media only screen and (max-width: 768px) {
-  .report-card {
-    width: calc(45% - 20px);
+  .reports-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
   }
 }
 
-@media only screen and (max-width: 480px) {
-  .report-card {
-    width: 100%;
+@media only screen and (max-width: 576px) {
+  .reports-grid {
+    grid-template-columns: 1fr; /* 1 column for mobile devices */
   }
 }

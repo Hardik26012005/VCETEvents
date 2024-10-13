@@ -94,8 +94,8 @@ const ManageEvents = () => {
             <h4>{event.title}</h4>
             <p>Date: {event.date}</p>
             <p>Prize: {event.prize}</p>
-            <p>{event.description}</p>
             <img src={event.image} alt={event.title} className="event-image" />
+            <p>{event.description}</p>
             <div className="event-buttons">
               <button onClick={() => handleEdit(event)} className="edit-button">Edit</button>
               <button onClick={() => handleDelete(event._id)} className="delete-button">Delete</button>

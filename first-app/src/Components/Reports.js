@@ -25,7 +25,9 @@ const Reports = () => {
         {reports.length > 0 ? (
           reports.map(report => (
             <div key={report._id} className="report-card">
+              <div className='eventt'>
               <h3>Event ID: {report.eventId}</h3>
+              </div>
               <div className="report-details">
                 <p><FaUser /> <strong>Attendees:</strong> {report.attendees}</p> {/* Icon for Attendees */}
                 <p><FaTrophy /> <strong>Winners:</strong> {report.winners}</p>  {/* Icon for Winners */}

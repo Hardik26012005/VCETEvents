@@ -1,5 +1,3 @@
-/* Navbar.css */
-
 /* Global settings */
 body {
   margin: 0;
@@ -9,68 +7,70 @@ body {
 /* Navbar styling */
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centers the entire navbar content */
   align-items: center;
-  background-color: #333;
+  background-color:#b3f6ffa1;
   padding: 10px 20px;
   transition: background-color 0.5s ease;
 }
 
-.navbar:hover {
-  background-color: #444; /* Change color on hover */
-}
-
 /* Brand container (logo + text) */
 .brand {
-  display: flex; /* Aligns logo and text horizontally */
+  display: flex; 
+  height: 30px;
   align-items: center;
+  margin-right: auto; /* Aligns brand to the left */
 }
 
 .navbar-logo {
-  height: 50px; /* Adjust the size as needed */
+  height: 35px; /* Adjust the size as needed */
   margin-right: 10px; /* Space between the logo and text */
 }
 
 .brand-text {
-  color: rgb(4, 205, 255);
-  font-size: 25px; /* Increase the font size for emphasis */
+  color: rgb(0, 0, 0);
+  font-size: 20px; /* Increase the font size for emphasis */
   font-weight: bold; /* Makes the text bold */
   letter-spacing: 1.2px; /* Adds a bit of letter spacing for a cleaner look */
-  text-transform: uppercase; /* Makes the text uppercase for a professional feel */
-  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* Navigation links */
 .nav-links {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin-right: 460px;
   display: flex;
+  justify-content: center; /* Center the nav links horizontally */
+  align-items: center;     /* Vertically center the items */
 }
 
+
 .nav-links li {
+  margin: 0 10px;          /* Add space between the links */
   position: relative;
 }
 
 .nav-links a {
   display: block;
-  color: white;
+  color: rgb(0, 0, 0);
   text-align: center;
   padding: 14px 16px;
+  font-weight: bold;
+  font-size: 18px;
   text-decoration: none;
   transition: color 0.3s ease;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-/* Change color for hover and active states */
+/* Hover and active states */
 .nav-links a:hover,
 .nav-links .active-link,
 .nav-links a:active {
-  color: #ff6347;
-   /* Change text color on hover or when active */
-
+  color: #000000;
 }
 
-/* Style for the hover effect */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -78,7 +78,7 @@ body {
   bottom: 0;
   width: 0;
   height: 2px;
-  background: #ff6347;
+  background: #f46a07;
   transition: width 0.3s ease, left 0.3s ease;
 }
 
@@ -90,7 +90,7 @@ body {
 
 /* Hamburger menu styling */
 .hamburger {
-  display: none; /* Hidden by default */
+  display: none;
   cursor: pointer;
   flex-direction: column;
   justify-content: space-around;
@@ -105,7 +105,7 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Hide navigation links on mobile */
+/* Mobile responsiveness */
 @media only screen and (max-width: 768px) {
   .nav-links {
     display: none;
@@ -118,7 +118,6 @@ body {
     align-items: center;
   }
 
-  /* Show links when the menu is open */
   .nav-links.open {
     display: flex;
   }
@@ -134,7 +133,6 @@ body {
     border-bottom: 1px solid #444;
   }
 
-  /* Show hamburger icon */
   .hamburger {
     display: flex;
   }

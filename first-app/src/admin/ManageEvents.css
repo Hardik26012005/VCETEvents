@@ -2,113 +2,136 @@
 
 /* General container styling */
 .manage-events-container {
-    padding: 40px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    max-width: 800px;
-  }
-  
-  /* Form styling */
-  .event-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
-  }
-  
-  .event-form input,
-  .event-form textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  .event-form button {
-    padding: 12px;
-    background-color: #4caf50; /* Green */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  .event-form button:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
-  }
-  
-  /* Events list styling */
-  .events-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .event-item {
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .event-image {
-    width: 400px;  /* Set width to 400 pixels */
-    height: 200px; /* Set height to 200 pixels */
-    object-fit: cover; /* Maintain aspect ratio and cover the area */
-    border-radius: 8px;
-    margin-top: 10px;
-  }
-  
-  .event-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  
-  .edit-button,
-  .delete-button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .edit-button {
-    background-color: #2196F3; /* Blue */
-    color: white;
-  }
-  
-  .delete-button {
-    background-color: #f44336; /* Red */
-    color: white;
-  }
-  
-  .edit-button:hover {
-    background-color: #1976D2;
-  }
-  
-  .delete-button:hover {
-    background-color: #d32f2f;
-  }
-  
-  .data-button {
-    padding: 8px 12px;
-    background-color: #ff6347;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .data-button:hover {
-    background-color: #ff4500;
-  }
-  
+  padding: 40px;
+  background-color: #f0f4f8; /* Softer background color */
+  border-radius: 12px; /* Slightly rounded corners */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+  margin: 20px auto;
+  max-width: 100%;
+}
+
+/* Form styling */
+.event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased gap for better spacing */
+  margin-bottom: 30px;
+}
+
+.event-form input,
+.event-form textarea {
+  padding: 12px; /* Increased padding for comfort */
+  border: 1px solid #ddd; /* Softer border */
+  border-radius: 8px; /* More rounded corners */
+  font-size: 16px;
+  font-family: Arial, sans-serif; /* Consistent font */
+}
+
+.event-form button {
+  padding: 14px;
+  background-color: #4caf50; /* Green */
+  color: white;
+  border: none;
+  border-radius: 8px; /* More rounded buttons */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Added shadow transition */
+}
+
+.event-form button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
+}
+
+/* Events list styling */
+.events-list {
+  display: flex; /* Use flexbox for layout */
+  flex-wrap: wrap; /* Allow items to wrap */
+  gap: 20px; /* Space between items */
+  padding: 0; /* Remove default padding */
+  list-style: none; /* Remove default list styling */
+}
+
+.event-item {
+  background-color: #ffffff; /* White background */
+  border: 1px solid #ddd; /* Softer border */
+  border-radius: 12px; /* More rounded corners */
+  padding: 15px; /* Increased padding */
+  width: calc(50% - 10px); /* Two items in a row with gap adjustment */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s; /* Smooth scaling */
+}
+
+.event-item:hover {
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.event-image {
+  display: block; /* Make the image a block element */
+  margin: 15px auto; /* Center horizontally with auto margins */
+  width: 300px; /* Set the desired width */
+  height: 200px; /* Adjust height automatically to maintain aspect ratio */
+  object-fit: cover; /* Maintain aspect ratio */
+  border-radius: 12px; /* More rounded corners */
+}
+
+
+.event-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+/* Button styles */
+.edit-button{
+  padding: 10px 16px; /* Slightly larger buttons */
+  border: none;
+  margin: 3px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; 
+}
+.delete-button{
+padding: 10px 16px; /* Slightly larger buttons */
+  border: none;
+  margin: 3px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Added transform for hover */
+}
+.data-button {
+  padding: 10px 16px; /* Slightly larger buttons */
+  border: none;
+  margin: 3px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Added transform for hover */
+}
+
+.edit-button {
+  background-color: #2196F3; /* Blue */
+  color: white;
+}
+
+.delete-button {
+  background-color: #ff1100; /* Red */
+  color: white;
+}
+
+.data-button {
+  background-color: #1f750c; /* Tomato */
+  color: white;
+}
+
+.edit-button:hover {
+  transform: scale(1.05); 
+}
+
+.delete-button:hover {
+  transform: scale(1.05);
+}
+
+.data-button:hover {
+  transform: scale(1.05);
+}
