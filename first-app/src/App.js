@@ -4,8 +4,8 @@ import HomePage from './Components/HomePage';
 import EventList from './Components/EventList';
 import Reports from './Components/Reports';
 import Booking from './Components/Booking';
-import Logout from './Components/Logout';
-import Login from './Components/Login';
+// import Logout from './Components/Logout';
+// import Login from './Components/Login';
 import ProtectedRoute from './Components/ProtectedRoute';
 import Navbar from './Components/Navbar';
 import AdminDashboard from './admin/AdminDashboard'; // Import Admin Dashboard
@@ -17,8 +17,8 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          {/* Login Route */}
-          <Route path="/login" element={<Login />} /> 
+          {/* Login Route
+          <Route path="/login" element={<Login />} />  */}
 
           {/* Protected Routes */}
           <Route 
@@ -62,7 +62,7 @@ function App() {
             } 
           />
 
-          <Route 
+          {/* <Route 
             path="/logout" 
             element={
               <ProtectedRoute>
@@ -70,7 +70,7 @@ function App() {
                 <Logout />
               </ProtectedRoute>
             } 
-          />
+          /> */}
 
           {/* Admin Dashboard */}
           <Route 
